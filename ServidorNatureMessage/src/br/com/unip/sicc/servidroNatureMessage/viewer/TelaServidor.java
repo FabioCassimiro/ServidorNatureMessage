@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 
 public class TelaServidor {
 
+    //Agora com versionamento
     public JLabel btnFechar;
     public JTextField txfPorta;
     public JLabel txtLblTitulo;
