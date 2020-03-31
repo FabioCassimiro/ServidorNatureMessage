@@ -128,7 +128,7 @@ public class TelaServidor {
         btnParar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                txtLblOff.setBounds(340, 119, 70, 25);
+
                 System.exit(0);
             }
         });
@@ -145,6 +145,7 @@ public class TelaServidor {
         btnParar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.exit(0);
             }
         });
 
@@ -159,7 +160,7 @@ public class TelaServidor {
         painelServidor.add(btnFechar);
         painelServidor.add(btnParar);
         painelServidor.add(txtLblOn);
-        // painelServidor.add(txtLblOff);
+        painelServidor.add(txtLblOff);
 
         return painelServidor;
 
