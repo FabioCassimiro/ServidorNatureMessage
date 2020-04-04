@@ -127,7 +127,7 @@ public class TelaServidor {
                 });
                 
                 txtLblOff.setVisible(false);
-                        txtLblOn.setBounds(340, 119, 70, 25);
+                txtLblOn.setBounds(340, 119, 70, 25);
 
                 executaServer.start();
 
