@@ -37,6 +37,7 @@ public class TelaServidor {
     JPanel painelServidor = new JPanel();
     JFrame telaServidor = new JFrame();
     ServidorNatureMessage server;
+
     public TelaServidor() {
         telaServidor.add(montaPainelServidor());
         telaServidor.setSize(500, 230);
@@ -81,6 +82,7 @@ public class TelaServidor {
         txtLblOff = new JLabel("Off-line");
         txtLblOff.setForeground(new Color(255, 99, 71));
         txtLblOff.setFont(new Font("Arial", Font.BOLD, 12));
+        txtLblOff.setBounds(340, 119, 70, 25);
 
         txtLblStatus = new JLabel("Status servidor:");
         txtLblStatus.setForeground(Color.WHITE);
@@ -109,12 +111,24 @@ public class TelaServidor {
         btnEntra.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    ServidorNatureMessage server = new ServidorNatureMessage(Integer.parseInt(txfPorta.getText()));
-                } catch (Exception ex) {
-                    Logger.getLogger(TelaServidor.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                txtLblOn.setBounds(340, 119, 70, 25);
+
+                Thread executaServer = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            ServidorNatureMessage server = new ServidorNatureMessage(Integer.parseInt(txfPorta.getText()));
+                            
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                        txtLblOff.setVisible(false);
+                        txtLblOn.setBounds(340, 119, 70, 25);
+
+                    }
+                });
+
+                executaServer.start();
+
             }
         });
 
@@ -129,7 +143,7 @@ public class TelaServidor {
         btnParar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                
                 System.exit(0);
             }
         });
