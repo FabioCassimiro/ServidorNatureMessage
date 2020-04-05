@@ -94,6 +94,32 @@ public class TelaServidor {
         txfPorta.setForeground(Color.WHITE);
         txfPorta.setBackground(null);
         txfPorta.setBounds(30, 110, 300, 30);
+        txfPorta.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                int codigo = e.getKeyCode();
+                int tecla = KeyEvent.VK_ENTER;
+                if (codigo == tecla) {
+                    Thread executaServer = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                ServidorNatureMessage server = new ServidorNatureMessage(Integer.parseInt(txfPorta.getText()));
+
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                            }
+
+                        }
+                    });
+
+                    txtLblOff.setVisible(false);
+                    txtLblOn.setBounds(340, 119, 70, 25);
+
+                    executaServer.start();
+
+                }
+            }
+        });
 
         JSeparator linhaSeparatorPorta = new JSeparator();
         linhaSeparatorPorta.setForeground(Color.WHITE);
@@ -108,7 +134,8 @@ public class TelaServidor {
         btnEntra.setFocusPainted(false);
         btnEntra.setFont(fonte);
         btnEntra.setMnemonic(KeyEvent.VK_ENTER);
-        btnEntra.addActionListener(new ActionListener() {
+        
+        /*btnEntra.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -132,7 +159,7 @@ public class TelaServidor {
                 executaServer.start();
 
             }
-        });
+        });*/
 
         btnParar = new JButton();
         btnParar.setText("Parar");
@@ -145,7 +172,7 @@ public class TelaServidor {
         btnParar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
                 System.exit(0);
             }
         });
