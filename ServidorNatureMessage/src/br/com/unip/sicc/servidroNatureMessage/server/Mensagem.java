@@ -1,16 +1,20 @@
 package br.com.unip.sicc.servidroNatureMessage.server;
 
+import br.com.unip.sicc.servidorNatureMessage.banco.AcoesBanco;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Mensagem {
 
     private Socket s;
     private ArrayList<PrintStream> clientes;
+    private AcoesBanco banco = new AcoesBanco();
 
     public void setS(Socket s) {
         this.s = s;
@@ -36,9 +40,19 @@ public class Mensagem {
                 try {
                     InputStreamReader isr = new InputStreamReader(s.getInputStream());
                     BufferedReader bff = new BufferedReader(isr);
+                    Calendar dataAtual = Calendar.getInstance();
+                    Calendar horaAtual = Calendar.getInstance();
+                    String hora = Integer.toString(horaAtual.get(Calendar.HOUR)) + Integer.toString(horaAtual.get(Calendar.MINUTE));
+                    String data = Integer.toString(horaAtual.get(Calendar.DATE));
+
+                    String array[] = new String[3];
+                    
+                    
 
                     while ((mensagem = bff.readLine()) != null) {
                         enviarMensagem(mensagem);
+                        array = mensagem.split(" ");
+                        banco.salvaMensagem(array[0], array[1], data, hora);
                     }
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -57,6 +71,7 @@ public class Mensagem {
             clientes.get(i).flush();
 
         }
+
     }
 
 }
