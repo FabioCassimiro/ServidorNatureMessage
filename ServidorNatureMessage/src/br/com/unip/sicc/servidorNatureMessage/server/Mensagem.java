@@ -51,8 +51,8 @@ public class Mensagem {
 
                     while ((mensagem = bff.readLine()) != null) {
                         enviarMensagem(mensagem);
-                        array = mensagem.split(" ");
-                        banco.salvaMensagem(array[0], array[1], data, hora);
+                        //array = mensagem.split(" ");
+                        //banco.salvaMensagem(array[0], array[1], data, hora);
                     }
                 } catch (IOException ex) {
                     ex.printStackTrace();
