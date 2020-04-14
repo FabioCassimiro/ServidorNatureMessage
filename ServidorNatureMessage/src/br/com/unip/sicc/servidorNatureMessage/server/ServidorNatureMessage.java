@@ -1,4 +1,4 @@
-package br.com.unip.sicc.servidroNatureMessage.server;
+package br.com.unip.sicc.servidorNatureMessage.server;
 
 import java.io.IOException;
 import java.io.PrintStream;

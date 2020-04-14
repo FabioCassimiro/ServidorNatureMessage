@@ -1,6 +1,6 @@
-package br.com.unip.sicc.servidroNatureMessage.viewer;
+package br.com.unip.sicc.servidorNatureMessage.viewer;
 
-import br.com.unip.sicc.servidroNatureMessage.server.ServidorNatureMessage;
+import br.com.unip.sicc.servidorNatureMessage.server.ServidorNatureMessage;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
