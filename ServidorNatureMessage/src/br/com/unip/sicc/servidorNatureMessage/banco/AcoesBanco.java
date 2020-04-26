@@ -14,7 +14,7 @@ public class AcoesBanco {
     private final String noUsuario = "root";
     private final String noSenha = "";
     private Connection connect;
-    private final String url = "jdbc:mysql://localhost:3306/teste?useTimeZone=true&serverTimezone=UTC";
+    private final String url = "jdbc:mysql://localhost:3306/naturemessage?useTimeZone=true&serverTimezone=UTC";
     private String sqlQuery;
     
     public AcoesBanco(){
@@ -32,11 +32,10 @@ public class AcoesBanco {
 
     }
     public void salvaMensagem(String noLogin, String noMensagem,String dtEnvioMensagem,String hrEnvio) {
-        sqlQuery = "INSERT INTO TB_MENSAGEM (NOUSUARIO,NOMENSAGEM,DTENVIO,HRENVIO) VALUES("+ "'" + noLogin + "','" + noMensagem + "','" + dtEnvioMensagem + "','" + hrEnvio +"'"+")" ;
+        sqlQuery = "INSERT INTO TB_MENSAGEM VALUES("+ "'" + noLogin + "','" + noMensagem + "','" + dtEnvioMensagem + "','" + hrEnvio +"'"+")" ;
         try {
             Statement cadatastro = connect.createStatement();
             cadatastro.executeUpdate(sqlQuery);
-            System.out.println("passei");
             
 
         } catch (SQLException e) {
