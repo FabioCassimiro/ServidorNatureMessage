@@ -50,9 +50,13 @@ public class Mensagem {
                     
 
                     while ((mensagem = bff.readLine()) != null) {
-                        enviarMensagem(mensagem);
-                        //array = mensagem.split(" ");
-                        //banco.salvaMensagem(array[0], array[1], data, hora);
+                         String[] mensage = mensagem.split("----");
+                         String msg = "";
+                         msg+= mensage[0] + "  " + mensage[1] + "  " + mensage[2];
+                        enviarMensagem(msg);
+                       
+                        System.out.println("Nome " + mensage[0] + " Mensagem " + mensage[1] + " HR " + mensage[2]);
+                        banco.salvaMensagem(mensage[0], mensage[1], mensage[2]);
                     }
                 } catch (IOException ex) {
                     ex.printStackTrace();

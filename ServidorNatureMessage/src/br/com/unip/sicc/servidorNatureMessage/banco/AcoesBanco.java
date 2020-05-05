@@ -14,7 +14,7 @@ public class AcoesBanco {
     private final String noUsuario = "root";
     private final String noSenha = "";
     private Connection connect;
-    private final String url = "jdbc:mysql://localhost:3306/naturemessage?useTimeZone=true&serverTimezone=UTC";
+    private final String url = "jdbc:mysql://localhost:3306/teste?useTimeZone=true&serverTimezone=UTC";
     private String sqlQuery;
     
     public AcoesBanco(){
@@ -31,17 +31,16 @@ public class AcoesBanco {
         return connect;
 
     }
-    public void salvaMensagem(String noLogin, String noMensagem,String dtEnvioMensagem,String hrEnvio) {
-        sqlQuery = "INSERT INTO TB_MENSAGEM VALUES("+ "'" + noLogin + "','" + noMensagem + "','" + dtEnvioMensagem + "','" + hrEnvio +"'"+")" ;
+    public void salvaMensagem(String noLogin, String noMensagem,String hrEnvio) {
+        sqlQuery = "insert into tb_mensagem (NOUSUARIO,NOMENSAGEM,DTENVIO,HRENVIO)VALUES ("+ "'" + noLogin + "','" + noMensagem + "','" + "05/05" + "','" + hrEnvio +"'"+")" ;
         try {
             Statement cadatastro = connect.createStatement();
             cadatastro.executeUpdate(sqlQuery);
-            
+            System.out.println("Mensagem salva");
 
         } catch (SQLException e) {
             //JOptionPane.showMessageDialog(null, e.getMessage() + " Erro de Banco de dados");
             e.printStackTrace();
         }
     }
-    
 }
