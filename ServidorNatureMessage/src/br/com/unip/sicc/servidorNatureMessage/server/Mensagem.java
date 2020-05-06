@@ -40,23 +40,13 @@ public class Mensagem {
                 try {
                     InputStreamReader isr = new InputStreamReader(s.getInputStream());
                     BufferedReader bff = new BufferedReader(isr);
-                    Calendar dataAtual = Calendar.getInstance();
-                    Calendar horaAtual = Calendar.getInstance();
-                    String hora = Integer.toString(horaAtual.get(Calendar.HOUR)) + Integer.toString(horaAtual.get(Calendar.MINUTE));
-                    String data = Integer.toString(horaAtual.get(Calendar.DATE));
-
-                    String array[] = new String[3];
-                    
-                    
 
                     while ((mensagem = bff.readLine()) != null) {
-                         String[] mensage = mensagem.split("----");
-                         String msg = "";
-                         msg+= mensage[0] + "  " + mensage[1] + "  " + mensage[2];
-                        enviarMensagem(msg);
-                       
-                        System.out.println("Nome " + mensage[0] + " Mensagem " + mensage[1] + " HR " + mensage[2]);
-                        banco.salvaMensagem(mensage[0], mensage[1], mensage[2]);
+                        /*String[] mensage = mensagem.split("----");
+                        String msg = "";
+                        msg += mensage[0] + "  " + mensage[1] + "  " + mensage[2];*/
+                        enviarMensagem(mensagem);
+                        banco.salvaMensagem(mensagem);
                     }
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -70,8 +60,10 @@ public class Mensagem {
 
     private void enviarMensagem(String msg) {
         for (int i = 0; i < clientes.size(); i++) {
-
-            clientes.get(i).println(msg);
+            String[] mensagem = msg.split("----");
+            String montaMensagem = "";
+            montaMensagem += mensagem[0] + "  " + mensagem[1] + "  " + mensagem[2];
+            clientes.get(i).println(montaMensagem);
             clientes.get(i).flush();
 
         }

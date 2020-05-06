@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
@@ -24,17 +25,17 @@ public class TelaServidor {
     //Agora com versionamento
     public JLabel btnFechar;
     public JTextField txfPorta;
-    public JLabel txtLblTitulo;
     public JButton btnEntra;
-    public JLabel txtLblStatus;
     public JButton btnParar;
-    public JButton btnExecute;
-    public JLabel txtLblOn;
-    public JLabel txtLblOff;
+    JLabel lblStatusServer;
+    public static String ipBanco;
+    public static String senhaBanco;
+    public static String usuarioBanco;
+    
 
     Font fonte = new Font("Arial", Font.BOLD, 15);
 
-    JPanel painelServidor = new JPanel();
+    JPanel pnlServidor = new JPanel();
     JFrame telaServidor = new JFrame();
     ServidorNatureMessage server;
 
@@ -47,12 +48,11 @@ public class TelaServidor {
     }
 
     ImageIcon imagemExecute = new ImageIcon(getClass().getResource("execute.png"));
-    JLabel mostraExecute = new JLabel(imagemExecute);
 
     public JPanel montaPainelServidor() {
 
-        painelServidor.setLayout(null);
-        painelServidor.setBackground(new Color(138, 43, 226));
+        pnlServidor.setLayout(null);
+        pnlServidor.setBackground(new Color(138, 43, 226));
 
         btnFechar = new JLabel("X");
         btnFechar.setForeground(Color.WHITE);
@@ -65,29 +65,12 @@ public class TelaServidor {
             }
         });
 
-        txtLblTitulo = new JLabel("SERVIDOR");
-        txtLblTitulo.setForeground(Color.WHITE);
-        txtLblTitulo.setFont(new Font("Arial", Font.BOLD, 30));
-        txtLblTitulo.setBounds(170, 40, 350, 32);
 
-        JLabel txtLblPorta = new JLabel("Porta:");
-        txtLblPorta.setForeground(Color.WHITE);
-        txtLblPorta.setFont(new Font("Arial", Font.BOLD, 12));
-        txtLblPorta.setBounds(30, 91, 70, 25);
-
-        txtLblOn = new JLabel("On-line");
-        txtLblOn.setForeground(new Color(0, 255, 127));
-        txtLblOn.setFont(new Font("Arial", Font.BOLD, 12));
-
-        txtLblOff = new JLabel("Off-line");
-        txtLblOff.setForeground(new Color(255, 99, 71));
-        txtLblOff.setFont(new Font("Arial", Font.BOLD, 12));
-        txtLblOff.setBounds(340, 119, 70, 25);
-
-        txtLblStatus = new JLabel("Status servidor:");
-        txtLblStatus.setForeground(Color.WHITE);
-        txtLblStatus.setFont(new Font("Arial", Font.BOLD, 12));
-        txtLblStatus.setBounds(340, 91, 100, 25);
+        pnlServidor.add(Componentes.montaTexto("Porta:", 12, Color.WHITE, 30, 91, 70, 25)); 
+        lblStatusServer = Componentes.montaTexto("", 12, new Color(0, 255, 127), 340, 119, 70, 25);
+        pnlServidor.add(Componentes.montaTexto("Status servidor:", 12, Color.WHITE, 340, 91, 100, 25)); 
+        pnlServidor.add(Componentes.montaTexto("SERVIDOR", 30, Color.WHITE, 170, 40, 350, 32));
+        pnlServidor.add(Componentes.montaSeparadora(30, 140, 300, 1));
 
         txfPorta = new JTextField();
         txfPorta.setBorder(null);
@@ -104,7 +87,7 @@ public class TelaServidor {
                         public void run() {
                             try {
                                 ServidorNatureMessage server = new ServidorNatureMessage(Integer.parseInt(txfPorta.getText()));
-
+                                lblStatusServer.setText("Online");
                             } catch (Exception ex) {
                                 ex.printStackTrace();
                             }
@@ -112,18 +95,13 @@ public class TelaServidor {
                         }
                     });
 
-                    txtLblOff.setVisible(false);
-                    txtLblOn.setBounds(340, 119, 70, 25);
+                       
 
                     executaServer.start();
 
                 }
             }
         });
-
-        JSeparator linhaSeparatorPorta = new JSeparator();
-        linhaSeparatorPorta.setForeground(Color.WHITE);
-        linhaSeparatorPorta.setBounds(30, 140, 300, 1);
 
         btnEntra = new JButton();
         btnEntra.setText("Iniciar");
@@ -134,8 +112,7 @@ public class TelaServidor {
         btnEntra.setFocusPainted(false);
         btnEntra.setFont(fonte);
         btnEntra.setMnemonic(KeyEvent.VK_ENTER);
-        
-        /*btnEntra.addActionListener(new ActionListener() {
+        btnEntra.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -144,22 +121,17 @@ public class TelaServidor {
                     public void run() {
                         try {
                             ServidorNatureMessage server = new ServidorNatureMessage(Integer.parseInt(txfPorta.getText()));
-                            
+                            lblStatusServer.setText("Online");
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }
-                        
 
                     }
                 });
-                
-                txtLblOff.setVisible(false);
-                txtLblOn.setBounds(340, 119, 70, 25);
-
                 executaServer.start();
 
             }
-        });*/
+        });
 
         btnParar = new JButton();
         btnParar.setText("Parar");
@@ -176,37 +148,24 @@ public class TelaServidor {
                 System.exit(0);
             }
         });
-
-        btnExecute = new JButton();
-        btnExecute.setBounds(20, 172, 50, 50);
-        btnExecute.setBorder(null);
-        btnExecute.setFocusPainted(false);
-        btnExecute.setFont(fonte);
-        btnExecute.setBackground(null);
-        btnExecute.setForeground(null);
-        btnExecute.setContentAreaFilled(false);
-        btnExecute.setIcon(imagemExecute);
-        btnParar.addActionListener(new ActionListener() {
+        JButton btnDAO = Componentes.montaBotaoIcone(imagemExecute, 20, 172, 50, 50, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                 ipBanco = JOptionPane.showInputDialog("Digite o IP do Banco de Dados");
+                 usuarioBanco = JOptionPane.showInputDialog("Digite o Usuario do Banco de Dados");
+                 senhaBanco = JOptionPane.showInputDialog("Digite a Senha do Banco de Dados");
             }
         });
+        //btnExecute.setBounds(20, 172, 50, 50);
+        
+        pnlServidor.add(txfPorta);
+        pnlServidor.add(btnDAO);
+        pnlServidor.add(btnEntra);
+        pnlServidor.add(btnFechar);
+        pnlServidor.add(btnParar);
+        pnlServidor.add(lblStatusServer);
 
-        painelServidor.add(btnExecute);
-        painelServidor.add(txtLblTitulo);
-        painelServidor.add(txtLblPorta);
-        painelServidor.add(txtLblTitulo);
-        painelServidor.add(txfPorta);
-        painelServidor.add(linhaSeparatorPorta);
-        painelServidor.add(txtLblStatus);
-        painelServidor.add(btnEntra);
-        painelServidor.add(btnFechar);
-        painelServidor.add(btnParar);
-        painelServidor.add(txtLblOn);
-        painelServidor.add(txtLblOff);
-
-        return painelServidor;
+        return pnlServidor;
 
     }
 }

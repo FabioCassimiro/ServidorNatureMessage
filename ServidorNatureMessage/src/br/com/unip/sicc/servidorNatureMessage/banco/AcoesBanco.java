@@ -11,36 +11,22 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 
 public class AcoesBanco {
-    private final String noUsuario = "root";
-    private final String noSenha = "";
-    private Connection connect;
-    private final String url = "jdbc:mysql://localhost:3306/teste?useTimeZone=true&serverTimezone=UTC";
-    private String sqlQuery;
+
     
     public AcoesBanco(){
-     conexao();
+        
     }
     
-    public Connection conexao() {
-        try {
-            connect = DriverManager.getConnection(url, noUsuario, noSenha);
-        } catch (SQLException e) {
-            //JOptionPane.showMessageDialog(null, "Não foi possivel estabeler conexão");
-            e.printStackTrace();
-        }
-        return connect;
 
-    }
-    public void salvaMensagem(String noLogin, String noMensagem,String hrEnvio) {
-        sqlQuery = "insert into tb_mensagem (NOUSUARIO,NOMENSAGEM,DTENVIO,HRENVIO)VALUES ("+ "'" + noLogin + "','" + noMensagem + "','" + "05/05" + "','" + hrEnvio +"'"+")" ;
+    
+    public void salvaMensagem(String mensagem) {
+        String[] dados = mensagem.split("----");
+        String sqlQuery = "insert into tb_mensagem (NOUSUARIO,NOMENSAGEM,DTENVIO,HRENVIO)VALUES ("+ "'" + dados[0] + "','" + dados[1] + "','" + "05/05" + "','" + dados[2] +"'"+")" ;
         try {
-            Statement cadatastro = connect.createStatement();
+            Statement cadatastro = ConexaoBancoDeDados.conexao().createStatement();
             cadatastro.executeUpdate(sqlQuery);
-            System.out.println("Mensagem salva");
-
         } catch (SQLException e) {
-            //JOptionPane.showMessageDialog(null, e.getMessage() + " Erro de Banco de dados");
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null," Erro ao salvar mensagem no Banco de dados");
         }
     }
 }
