@@ -8,12 +8,18 @@ import javax.swing.JOptionPane;
 
 public class ConexaoBancoDeDados {
 
-    public static final String url = TelaServidor.ipBanco.equals("")?
-            "jdbc:mysql://localhost:3306/teste?useTimeZone=true&serverTimezone=UTC":
+   /* public static final String url = TelaServidor.ipBanco.equals("")?
+            "jdbc:mysql://25.104.205.56:3306/teste?useTimeZone=true&serverTimezone=UTC":
             "jdbc:mysql://"+TelaServidor.ipBanco+":3306/"+TelaServidor.nomeBanco+"?useTimeZone=true&serverTimezone=UTC";
-    public static final String noLoginBanco = TelaServidor.usuarioBanco.equals("") ?"root":TelaServidor.usuarioBanco;
-    public static final String noSenhaBanco = TelaServidor.senhaBanco.equals("") ?"":TelaServidor.senhaBanco;
+    public static final String noLoginBanco = TelaServidor.usuarioBanco.equals("") ?"admin":TelaServidor.usuarioBanco;
+    public static final String noSenhaBanco = TelaServidor.senhaBanco.equals("") ?"naturemessage@_@125311314":TelaServidor.senhaBanco;
     public static final String noBanco = TelaServidor.nomeBanco.equals("") ?"teste":TelaServidor.nomeBanco;
+    public static Connection conect = null;*/
+    
+    public static final String url = "jdbc:mysql://25.104.205.56:3306/teste?useTimeZone=true&serverTimezone=UTC";
+    public static final String noLoginBanco = "admin";
+    public static final String noSenhaBanco = "naturemessage@_@125311314";
+    public static final String noBanco = "teste";
     public static Connection conect = null;
 
     public static Connection conexao() {
