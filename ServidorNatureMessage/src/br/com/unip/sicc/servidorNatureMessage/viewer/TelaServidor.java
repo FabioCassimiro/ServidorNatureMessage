@@ -31,7 +31,7 @@ public class TelaServidor {
     public static String ipBanco;
     public static String senhaBanco;
     public static String usuarioBanco;
-    
+    public static String nomeBanco;
 
     Font fonte = new Font("Arial", Font.BOLD, 15);
 
@@ -65,10 +65,9 @@ public class TelaServidor {
             }
         });
 
-
-        pnlServidor.add(Componentes.montaTexto("Porta:", 12, Color.WHITE, 30, 91, 70, 25)); 
+        pnlServidor.add(Componentes.montaTexto("Porta:", 12, Color.WHITE, 30, 91, 70, 25));
         lblStatusServer = Componentes.montaTexto("", 12, new Color(0, 255, 127), 340, 119, 70, 25);
-        pnlServidor.add(Componentes.montaTexto("Status servidor:", 12, Color.WHITE, 340, 91, 100, 25)); 
+        pnlServidor.add(Componentes.montaTexto("Status servidor:", 12, Color.WHITE, 340, 91, 100, 25));
         pnlServidor.add(Componentes.montaTexto("SERVIDOR", 30, Color.WHITE, 170, 40, 350, 32));
         pnlServidor.add(Componentes.montaSeparadora(30, 140, 300, 1));
 
@@ -94,8 +93,6 @@ public class TelaServidor {
 
                         }
                     });
-
-                       
 
                     executaServer.start();
 
@@ -151,13 +148,13 @@ public class TelaServidor {
         JButton btnDAO = Componentes.montaBotaoIcone(imagemExecute, 20, 172, 50, 50, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                 ipBanco = JOptionPane.showInputDialog("Digite o IP do Banco de Dados");
-                 usuarioBanco = JOptionPane.showInputDialog("Digite o Usuario do Banco de Dados");
-                 senhaBanco = JOptionPane.showInputDialog("Digite a Senha do Banco de Dados");
+                nomeBanco = JOptionPane.showInputDialog("Digite o nome do Banco de Dados");
+                ipBanco = JOptionPane.showInputDialog("Digite o IP do Banco de Dados");
+                usuarioBanco = JOptionPane.showInputDialog("Digite o Usuario do Banco de Dados");
+                senhaBanco = JOptionPane.showInputDialog("Digite a Senha do Banco de Dados");
             }
         });
-        //btnExecute.setBounds(20, 172, 50, 50);
-        
+
         pnlServidor.add(txfPorta);
         pnlServidor.add(btnDAO);
         pnlServidor.add(btnEntra);

@@ -10,9 +10,10 @@ public class ConexaoBancoDeDados {
 
     public static final String url = TelaServidor.ipBanco.equals("")?
             "jdbc:mysql://localhost:3306/teste?useTimeZone=true&serverTimezone=UTC":
-            "jdbc:mysql://"+TelaServidor.ipBanco+":3306/teste?useTimeZone=true&serverTimezone=UTC";
+            "jdbc:mysql://"+TelaServidor.ipBanco+":3306/"+TelaServidor.nomeBanco+"?useTimeZone=true&serverTimezone=UTC";
     public static final String noLoginBanco = TelaServidor.usuarioBanco.equals("") ?"root":TelaServidor.usuarioBanco;
     public static final String noSenhaBanco = TelaServidor.senhaBanco.equals("") ?"":TelaServidor.senhaBanco;
+    public static final String noBanco = TelaServidor.nomeBanco.equals("") ?"teste":TelaServidor.nomeBanco;
     public static Connection conect = null;
 
     public static Connection conexao() {
