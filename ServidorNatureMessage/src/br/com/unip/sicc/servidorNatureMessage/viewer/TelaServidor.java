@@ -28,10 +28,10 @@ public class TelaServidor {
     public JButton btnEntra;
     public JButton btnParar;
     JLabel lblStatusServer;
-    public static String ipBanco;
-    public static String senhaBanco;
-    public static String usuarioBanco;
-    public static String nomeBanco;
+    public static String ipBanco = "";
+    public static String senhaBanco = "";
+    public static String usuarioBanco = "";
+    public static String nomeBanco = "";
 
     Font fonte = new Font("Arial", Font.BOLD, 15);
 

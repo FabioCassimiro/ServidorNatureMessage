@@ -62,7 +62,11 @@ public class Mensagem {
         for (int i = 0; i < clientes.size(); i++) {
             String[] mensagem = msg.split("----");
             String montaMensagem = "";
-            montaMensagem += mensagem[0] + "  " + mensagem[1] + "  " + mensagem[2];
+            if (montaMensagem.equals("")) {
+                montaMensagem = mensagem[0] + "  " + mensagem[1] + "  " + mensagem[2];
+            } else {
+                montaMensagem += mensagem[0] + "  " + mensagem[1] + "  " + mensagem[2];
+            }
             clientes.get(i).println(montaMensagem);
             clientes.get(i).flush();
 
