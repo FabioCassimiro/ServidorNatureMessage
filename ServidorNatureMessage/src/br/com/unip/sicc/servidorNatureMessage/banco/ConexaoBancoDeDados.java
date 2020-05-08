@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 public class ConexaoBancoDeDados {
 
     public static final String url = TelaServidor.noEndereco.equals("")
-            ? "jdbc:mysql://25.104.205.56:3306/teste?useTimeZone=true&serverTimezone=UTC"
+            ? "jdbc:mysql://25.104.205.56:3306/naturemessage?useTimeZone=true&serverTimezone=UTC"
             : "jdbc:mysql://" + TelaServidor.noEndereco + ":3306/" + TelaServidor.noBanco + "?useTimeZone=true&serverTimezone=UTC";
     public static final String noLoginBanco = TelaServidor.usuarioBanco.equals("") ? "admin" : TelaServidor.usuarioBanco;
     public static final String noSenhaBanco = TelaServidor.senhaBanco.equals("") ? "naturemessage@_@125311314" : TelaServidor.senhaBanco;
