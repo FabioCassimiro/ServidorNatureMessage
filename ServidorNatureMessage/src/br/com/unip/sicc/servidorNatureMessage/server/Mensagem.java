@@ -7,25 +7,15 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 public class Mensagem {
 
-    private Socket s;
+    private Socket socket;
     private ArrayList<PrintStream> clientes;
     private AcoesBanco banco = new AcoesBanco();
 
-    public void setS(Socket s) {
-        this.s = s;
-    }
-
-    public void setClientes(ArrayList<PrintStream> clientes) {
-        this.clientes = clientes;
-    }
-
-    public Mensagem(Socket s, ArrayList<PrintStream> clientes) {
-        this.s = s;
+    public Mensagem(Socket socket, ArrayList<PrintStream> clientes) {
+        this.socket = socket;
         this.clientes = clientes;
         Thread();
     }
@@ -38,15 +28,12 @@ public class Mensagem {
 
                 String mensagem = "";
                 try {
-                    InputStreamReader isr = new InputStreamReader(s.getInputStream());
+                    InputStreamReader isr = new InputStreamReader(socket.getInputStream());
                     BufferedReader bff = new BufferedReader(isr);
 
                     while ((mensagem = bff.readLine()) != null) {
-                        /*String[] mensage = mensagem.split("----");
-                        String msg = "";
-                        msg += mensage[0] + "  " + mensage[1] + "  " + mensage[2];*/
                         enviarMensagem(mensagem);
-                        banco.salvaMensagem(mensagem);
+                        AcoesBanco.salvaMensagem(mensagem);
                     }
                 } catch (IOException ex) {
                     ex.printStackTrace();

@@ -8,25 +8,19 @@ import javax.swing.JOptionPane;
 
 public class ConexaoBancoDeDados {
 
-   /* public static final String url = TelaServidor.ipBanco.equals("")?
-            "jdbc:mysql://25.104.205.56:3306/teste?useTimeZone=true&serverTimezone=UTC":
-            "jdbc:mysql://"+TelaServidor.ipBanco+":3306/"+TelaServidor.nomeBanco+"?useTimeZone=true&serverTimezone=UTC";
-    public static final String noLoginBanco = TelaServidor.usuarioBanco.equals("") ?"admin":TelaServidor.usuarioBanco;
-    public static final String noSenhaBanco = TelaServidor.senhaBanco.equals("") ?"naturemessage@_@125311314":TelaServidor.senhaBanco;
-    public static final String noBanco = TelaServidor.nomeBanco.equals("") ?"teste":TelaServidor.nomeBanco;
-    public static Connection conect = null;*/
-    
-    public static final String url = "jdbc:mysql://25.104.205.56:3306/teste?useTimeZone=true&serverTimezone=UTC";
-    public static final String noLoginBanco = "admin";
-    public static final String noSenhaBanco = "naturemessage@_@125311314";
-    public static final String noBanco = "teste";
+    public static final String url = TelaServidor.noEndereco.equals("")
+            ? "jdbc:mysql://25.104.205.56:3306/teste?useTimeZone=true&serverTimezone=UTC"
+            : "jdbc:mysql://" + TelaServidor.noEndereco + ":3306/" + TelaServidor.noBanco + "?useTimeZone=true&serverTimezone=UTC";
+    public static final String noLoginBanco = TelaServidor.usuarioBanco.equals("") ? "admin" : TelaServidor.usuarioBanco;
+    public static final String noSenhaBanco = TelaServidor.senhaBanco.equals("") ? "naturemessage@_@125311314" : TelaServidor.senhaBanco;
+    public static final String noBanco = !TelaServidor.noBanco.equals("nulo") ? "teste" : "";
     public static Connection conect = null;
 
     public static Connection conexao() {
         try {
             return conect = DriverManager.getConnection(url, noLoginBanco, noSenhaBanco);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"Nao foi possivel conectar ao Banco de Dados informado");
+            JOptionPane.showMessageDialog(null, "Nao foi possivel conectar ao Banco de Dados informado");
         }
         return null;
 

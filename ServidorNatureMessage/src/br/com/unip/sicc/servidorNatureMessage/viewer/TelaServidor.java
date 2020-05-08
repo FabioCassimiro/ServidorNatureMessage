@@ -28,12 +28,10 @@ public class TelaServidor {
     public JButton btnEntra;
     public JButton btnParar;
     JLabel lblStatusServer;
-    public static String ipBanco = "";
+    public static String noEndereco = "";
     public static String senhaBanco = "";
     public static String usuarioBanco = "";
-    public static String nomeBanco = "";
-
-    Font fonte = new Font("Arial", Font.BOLD, 15);
+    public static String noBanco = "";
 
     JPanel pnlServidor = new JPanel();
     JFrame telaServidor = new JFrame();
@@ -107,7 +105,7 @@ public class TelaServidor {
         btnEntra.setForeground(Color.WHITE);
         btnEntra.setBorder(null);
         btnEntra.setFocusPainted(false);
-        btnEntra.setFont(fonte);
+        btnEntra.setFont(new Font("Arial", Font.BOLD, 15));
         btnEntra.setMnemonic(KeyEvent.VK_ENTER);
         btnEntra.addActionListener(new ActionListener() {
             @Override
@@ -137,7 +135,7 @@ public class TelaServidor {
         btnParar.setForeground(Color.WHITE);
         btnParar.setBorder(null);
         btnParar.setFocusPainted(false);
-        btnParar.setFont(fonte);
+        btnParar.setFont(new Font("Arial", Font.BOLD, 15));
         btnParar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -148,8 +146,8 @@ public class TelaServidor {
         JButton btnDAO = Componentes.montaBotaoIcone(imagemExecute, 20, 172, 50, 50, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                nomeBanco = JOptionPane.showInputDialog("Digite o nome do Banco de Dados");
-                ipBanco = JOptionPane.showInputDialog("Digite o IP do Banco de Dados");
+                noBanco = JOptionPane.showInputDialog("Digite o nome do Banco de Dados");
+                noEndereco = JOptionPane.showInputDialog("Digite o IP do Banco de Dados");
                 usuarioBanco = JOptionPane.showInputDialog("Digite o Usuario do Banco de Dados");
                 senhaBanco = JOptionPane.showInputDialog("Digite a Senha do Banco de Dados");
             }
