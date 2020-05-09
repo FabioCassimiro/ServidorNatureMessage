@@ -13,10 +13,11 @@ public class ServidorNatureMessage {
         
         try {
             ServerSocket serverSocket = new ServerSocket(porta);
+            System.out.println("Aguardando conexao...");
             Socket socket;
             
             while(true){
-                socket = serverSocket.accept();  
+                socket = serverSocket.accept();
                 
                 //Guarda ip clientes
                 clientes.add(new PrintStream(socket.getOutputStream()));
