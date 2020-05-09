@@ -84,9 +84,9 @@ public class TelaServidor {
                         public void run() {
                             try {
                                 ServidorNatureMessage server = new ServidorNatureMessage(Integer.parseInt(txfPorta.getText()));
-                                lblStatusServer.setText("Online");
+                                
                             } catch (Exception ex) {
-                                ex.printStackTrace();
+                                JOptionPane.showMessageDialog(null, "Porta nao informada ou invalida", "Mensagem Servidor", JOptionPane.ERROR_MESSAGE);
                             }
 
                         }
@@ -106,7 +106,6 @@ public class TelaServidor {
         btnEntra.setBorder(null);
         btnEntra.setFocusPainted(false);
         btnEntra.setFont(new Font("Arial", Font.BOLD, 15));
-        btnEntra.setMnemonic(KeyEvent.VK_ENTER);
         btnEntra.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -116,9 +115,9 @@ public class TelaServidor {
                     public void run() {
                         try {
                             ServidorNatureMessage server = new ServidorNatureMessage(Integer.parseInt(txfPorta.getText()));
-                            lblStatusServer.setText("Online");
                         } catch (Exception ex) {
-                            ex.printStackTrace();
+                            JOptionPane.showMessageDialog(null, "Porta nao informada ou invalida", "Mensagem Servidor", JOptionPane.ERROR_MESSAGE);
+                            
                         }
 
                     }

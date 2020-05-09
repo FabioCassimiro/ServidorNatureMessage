@@ -5,6 +5,7 @@ import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class ServidorNatureMessage {
     
@@ -13,21 +14,20 @@ public class ServidorNatureMessage {
         
         try {
             ServerSocket serverSocket = new ServerSocket(porta);
-            System.out.println("Aguardando conexao...");
             Socket socket;
             
             while(true){
+                //Encaminha a conexao.
                 socket = serverSocket.accept();
-                
-                //Guarda ip clientes
+                //Guarda ip clientes.
                 clientes.add(new PrintStream(socket.getOutputStream()));
                 Mensagem msg = new Mensagem(socket,clientes);
 
             }
             
-            
         } catch (IOException ex) {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Esta porta ja esta em uso, informe uma que nao esteja ocupada!",
+                    "Mensagem Servidor",JOptionPane.ERROR_MESSAGE);
         }
     }
 }
