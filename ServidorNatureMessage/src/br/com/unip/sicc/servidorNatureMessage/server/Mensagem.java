@@ -54,9 +54,8 @@ public class Mensagem {
             } else {
                 montaMensagem += mensagem[0] + "  " + mensagem[1] + "  " + mensagem[2];
             }
-            clientes.get(i).println(montaMensagem);
+            clientes.get(i).println(montaMensagem + "**");
             clientes.get(i).flush();
-
         }
 
     }
