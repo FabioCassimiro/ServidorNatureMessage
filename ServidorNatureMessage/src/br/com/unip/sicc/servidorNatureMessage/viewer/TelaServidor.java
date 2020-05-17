@@ -59,7 +59,6 @@ public class TelaServidor {
         });
 
         pnlServidor.add(Componentes.montaTexto("Porta:", 12, Color.WHITE, 30, 91, 70, 25));
-        pnlServidor.add(Componentes.montaTexto("Status servidor:", 12, Color.WHITE, 340, 91, 100, 25));
         pnlServidor.add(Componentes.montaTexto("SERVIDOR", 30, Color.WHITE, 170, 40, 350, 32));
         pnlServidor.add(Componentes.montaSeparadora(30, 140, 300, 1));
 
