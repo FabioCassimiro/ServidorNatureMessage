@@ -41,11 +41,15 @@ public class TelaServidor {
     }
 
     ImageIcon imagemExecute = new ImageIcon(getClass().getResource("execute.png"));
+    ImageIcon imagemServidor = new ImageIcon(getClass().getResource("/br/com/unip/sicc/ServidorNatureMessage/image/servidor.png"));
 
     public JPanel montaPainelServidor() {
 
         pnlServidor.setLayout(null);
         pnlServidor.setBackground(new Color(138, 43, 226));
+        
+        JLabel lblImagServidor = new JLabel(imagemServidor);
+        lblImagServidor.setBounds(15, 35, 170, 170);
 
         btnFechar = new JLabel("X");
         btnFechar.setForeground(Color.WHITE);
@@ -58,15 +62,15 @@ public class TelaServidor {
             }
         });
 
-        pnlServidor.add(Componentes.montaTexto("Porta:", 12, Color.WHITE, 30, 91, 70, 25));
-        pnlServidor.add(Componentes.montaTexto("SERVIDOR", 30, Color.WHITE, 170, 40, 350, 32));
-        pnlServidor.add(Componentes.montaSeparadora(30, 140, 300, 1));
+        pnlServidor.add(Componentes.montaTexto("Porta:", 12, Color.WHITE, 172, 91, 70, 25));
+        pnlServidor.add(Componentes.montaTexto("SERVIDOR", 30, Color.WHITE, 174, 25, 350, 32));
+        pnlServidor.add(Componentes.montaSeparadora(150, 140, 140, 1));
 
         txfPorta = new JTextField();
         txfPorta.setBorder(null);
         txfPorta.setForeground(Color.WHITE);
         txfPorta.setBackground(null);
-        txfPorta.setBounds(30, 110, 300, 30);
+        txfPorta.setBounds(173, 110, 115, 30);
         txfPorta.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 int codigo = e.getKeyCode();
@@ -131,10 +135,12 @@ public class TelaServidor {
         btnParar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                System.exit(0);
+                if(JOptionPane.showConfirmDialog(null, "Deseja realmente encerrar o servidor?", "Mensagem Servidor", JOptionPane.YES_OPTION) == 0) {
+                    System.exit(0);
+                }
             }
         });
+        
         JButton btnDAO = Componentes.montaBotaoIcone(imagemExecute, 20, 172, 50, 50, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -144,12 +150,15 @@ public class TelaServidor {
                 senhaBanco = JOptionPane.showInputDialog("Digite a Senha do Banco de Dados");
             }
         });
+        btnDAO.setToolTipText("Banco de dados");
 
+        pnlServidor.add(lblImagServidor);
         pnlServidor.add(txfPorta);
         pnlServidor.add(btnDAO);
         pnlServidor.add(btnEntra);
         pnlServidor.add(btnFechar);
         pnlServidor.add(btnParar);
+        
 
         return pnlServidor;
 
