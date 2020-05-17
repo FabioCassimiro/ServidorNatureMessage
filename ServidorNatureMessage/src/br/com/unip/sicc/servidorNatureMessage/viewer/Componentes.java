@@ -1,4 +1,3 @@
-
 package br.com.unip.sicc.servidorNatureMessage.viewer;
 
 import java.awt.Color;
@@ -18,15 +17,15 @@ public class Componentes {
         texto.setBounds(x, y, altura, largura);
         return texto;
     }
-    
+
     public static JSeparator montaSeparadora(int x, int y, int altura, int largura) {
         JSeparator linha = new JSeparator();
         linha.setForeground(Color.WHITE);
         linha.setBounds(x, y, altura, largura);
         return linha;
     }
-    
-        public static JButton montaBotaoIcone(ImageIcon icone, int x, int y, int altura, int largura, ActionListener acao) {
+
+    public static JButton montaBotaoIcone(ImageIcon icone, int x, int y, int altura, int largura, ActionListener acao) {
         JButton btnIcon = new JButton();
         btnIcon.setBounds(x, y, altura, largura);
         btnIcon.setBorder(null);

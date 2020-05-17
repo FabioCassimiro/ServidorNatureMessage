@@ -20,8 +20,8 @@ public class ConexaoBancoDeDados {
         try {
             return conect = DriverManager.getConnection(url, noLoginBanco, noSenhaBanco);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null," Não foi possivel conectar ao Banco de dados",
-                    "Mensagem Servidor",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, " Não foi possivel conectar ao Banco de dados",
+                    "Mensagem Servidor", JOptionPane.ERROR_MESSAGE);
         }
         return null;
 

@@ -7,17 +7,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
 public class TelaServidor {
@@ -64,7 +59,6 @@ public class TelaServidor {
         });
 
         pnlServidor.add(Componentes.montaTexto("Porta:", 12, Color.WHITE, 30, 91, 70, 25));
-        lblStatusServer = Componentes.montaTexto("", 12, new Color(0, 255, 127), 340, 119, 70, 25);
         pnlServidor.add(Componentes.montaTexto("Status servidor:", 12, Color.WHITE, 340, 91, 100, 25));
         pnlServidor.add(Componentes.montaTexto("SERVIDOR", 30, Color.WHITE, 170, 40, 350, 32));
         pnlServidor.add(Componentes.montaSeparadora(30, 140, 300, 1));
@@ -84,7 +78,7 @@ public class TelaServidor {
                         public void run() {
                             try {
                                 ServidorNatureMessage server = new ServidorNatureMessage(Integer.parseInt(txfPorta.getText()));
-                                
+
                             } catch (Exception ex) {
                                 JOptionPane.showMessageDialog(null, "Porta nao informada ou invalida", "Mensagem Servidor", JOptionPane.ERROR_MESSAGE);
                             }
@@ -117,7 +111,7 @@ public class TelaServidor {
                             ServidorNatureMessage server = new ServidorNatureMessage(Integer.parseInt(txfPorta.getText()));
                         } catch (Exception ex) {
                             JOptionPane.showMessageDialog(null, "Porta nao informada ou invalida", "Mensagem Servidor", JOptionPane.ERROR_MESSAGE);
-                            
+
                         }
 
                     }
@@ -157,7 +151,6 @@ public class TelaServidor {
         pnlServidor.add(btnEntra);
         pnlServidor.add(btnFechar);
         pnlServidor.add(btnParar);
-        pnlServidor.add(lblStatusServer);
 
         return pnlServidor;
 

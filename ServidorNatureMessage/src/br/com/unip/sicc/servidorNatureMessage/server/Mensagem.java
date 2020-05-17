@@ -7,12 +7,12 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class Mensagem {
 
     private Socket socket;
     private ArrayList<PrintStream> clientes;
-    private AcoesBanco banco = new AcoesBanco();
 
     public Mensagem(Socket socket, ArrayList<PrintStream> clientes) {
         this.socket = socket;
@@ -35,8 +35,9 @@ public class Mensagem {
                         enviarMensagem(mensagem);
                         AcoesBanco.salvaMensagem(mensagem);
                     }
+
                 } catch (IOException ex) {
-                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Erro Salvamento/Envio de mensagem", "Mensagem Servidor", JOptionPane.ERROR_MESSAGE);
                 }
 
             }
