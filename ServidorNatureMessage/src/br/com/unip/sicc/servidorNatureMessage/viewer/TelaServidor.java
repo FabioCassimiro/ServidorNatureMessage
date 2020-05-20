@@ -40,8 +40,8 @@ public class TelaServidor {
         telaServidor.setVisible(true);
     }
 
-    ImageIcon imagemExecute = new ImageIcon(getClass().getResource("execute.png"));
-    ImageIcon imagemServidor = new ImageIcon(getClass().getResource("/br/com/unip/sicc/ServidorNatureMessage/image/servidor.png"));
+    ImageIcon imagemExecute = new ImageIcon(getClass().getResource("/br/com/unip/sicc/servidorNatureMessage/image/execute.png"));
+    ImageIcon imagemServidor = new ImageIcon(getClass().getResource("/br/com/unip/sicc/servidorNatureMessage/image/servidor.png"));
 
     public JPanel montaPainelServidor() {
 
