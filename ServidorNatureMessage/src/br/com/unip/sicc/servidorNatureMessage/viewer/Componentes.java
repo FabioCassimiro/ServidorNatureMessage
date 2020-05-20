@@ -40,7 +40,7 @@ public class Componentes {
     }
     
     public void montaIconeFrame(JFrame icone) {
-        icone.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/unip/sicc/servidorNatureMessage/image/logo.png")));
+        icone.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/unip/sicc/servidorNatureMessage/image/logoIcone.png")));
     }
     
     public static JLabel montaBtnMinimizar(JFrame janela) {
