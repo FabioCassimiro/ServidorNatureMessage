@@ -17,20 +17,20 @@ import javax.swing.JTextField;
 
 public class TelaServidor {
 
-    //Agora com versionamento
-    public JLabel btnFechar;
-    public JTextField txfPorta;
-    public JButton btnEntra;
-    public JButton btnParar;
-    JLabel lblStatusServer;
+    private JLabel btnFechar;
+    private JTextField txfPorta;
+    private JButton btnEntra;
+    private JButton btnParar;
+    public JLabel lblStatusServer;
     public static String noEndereco = "";
     public static String senhaBanco = "";
     public static String usuarioBanco = "";
     public static String noBanco = "";
 
-    JPanel pnlServidor = new JPanel();
-    JFrame telaServidor = new JFrame();
-    ServidorNatureMessage server;
+    private JPanel pnlServidor = new JPanel();
+    private JFrame telaServidor = new JFrame();
+    public ServidorNatureMessage server;
+    private Componentes componentes = new Componentes();
 
     public TelaServidor() {
         telaServidor.add(montaPainelServidor());
@@ -38,6 +38,7 @@ public class TelaServidor {
         telaServidor.setLocationRelativeTo(null);
         telaServidor.setUndecorated(true);
         telaServidor.setVisible(true);
+        componentes.montaIconeFrame(telaServidor);
     }
 
     ImageIcon imagemExecute = new ImageIcon(getClass().getResource("/br/com/unip/sicc/servidorNatureMessage/image/execute.png"));
@@ -47,7 +48,7 @@ public class TelaServidor {
 
         pnlServidor.setLayout(null);
         pnlServidor.setBackground(new Color(138, 43, 226));
-        
+
         JLabel lblImagServidor = new JLabel(imagemServidor);
         lblImagServidor.setBounds(15, 35, 170, 170);
 
@@ -135,12 +136,12 @@ public class TelaServidor {
         btnParar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(JOptionPane.showConfirmDialog(null, "Deseja realmente encerrar o servidor?", "Mensagem Servidor", JOptionPane.YES_OPTION) == 0) {
+                if (JOptionPane.showConfirmDialog(null, "Deseja realmente encerrar o servidor?", "Mensagem Servidor", JOptionPane.YES_OPTION) == 0) {
                     System.exit(0);
                 }
             }
         });
-        
+
         JButton btnDAO = Componentes.montaBotaoIcone(imagemExecute, 20, 172, 50, 50, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -158,7 +159,6 @@ public class TelaServidor {
         pnlServidor.add(btnEntra);
         pnlServidor.add(btnFechar);
         pnlServidor.add(btnParar);
-        
 
         return pnlServidor;
 

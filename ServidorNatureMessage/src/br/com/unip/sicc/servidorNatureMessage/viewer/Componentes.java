@@ -2,9 +2,11 @@ package br.com.unip.sicc.servidorNatureMessage.viewer;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
 
@@ -35,5 +37,9 @@ public class Componentes {
         btnIcon.setIcon(icone);
         btnIcon.addActionListener(acao);
         return btnIcon;
+    }
+    
+    public void montaIconeFrame(JFrame icone) {
+        icone.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/unip/sicc/servidorNatureMessage/image/logo.png")));
     }
 }
