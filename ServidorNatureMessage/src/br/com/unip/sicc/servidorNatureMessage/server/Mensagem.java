@@ -37,7 +37,7 @@ public class Mensagem {
                     }
 
                 } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(null, "Erro Salvamento/Envio de mensagem", "Mensagem Servidor", JOptionPane.ERROR_MESSAGE);
+                    ex.printStackTrace();
                 }
 
             }
