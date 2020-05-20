@@ -45,6 +45,8 @@ public class TelaServidor {
     ImageIcon imagemServidor = new ImageIcon(getClass().getResource("/br/com/unip/sicc/servidorNatureMessage/image/servidor.png"));
 
     public JPanel montaPainelServidor() {
+        
+        pnlServidor.add(Componentes.montaBtnMinimizar(telaServidor));
 
         pnlServidor.setLayout(null);
         pnlServidor.setBackground(new Color(138, 43, 226));

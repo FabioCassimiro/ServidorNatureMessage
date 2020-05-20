@@ -42,4 +42,18 @@ public class Componentes {
     public void montaIconeFrame(JFrame icone) {
         icone.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/unip/sicc/servidorNatureMessage/image/logo.png")));
     }
+    
+    public static JLabel montaBtnMinimizar(JFrame janela) {
+        JLabel minimizar = new JLabel("_");
+        minimizar.setForeground(Color.WHITE);
+        minimizar.setFont(new Font("Arial", Font.BOLD, 25));
+        minimizar.setBounds(450, -1, 25, 25);
+        minimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                janela.setExtendedState(JFrame.ICONIFIED);
+            }
+        });
+        return minimizar;
+    }
 }
